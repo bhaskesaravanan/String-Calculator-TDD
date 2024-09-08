@@ -7,17 +7,25 @@ def add_numbers(number_string):
         return 0
     string_with_number = replace_custom_delimiter_with_comma(number_string)
     number_list = string_with_number.split(",")
-    return sum([int(number) for number in number_list])
+    positive_number_list = []
+    negative_number_list = []
+    for number in number_list:
+        if int(number) < 0:
+            negative_number_list.append(number)
+        else:
+            positive_number_list.append(int(number))
+    if negative_number_list:
+        raise ValueError(f"negative numbers not allowed: {', '.join(negative_number_list)}")
+    return sum(positive_number_list)
 
 
 def replace_custom_delimiter_with_comma(string):
-    # The replace_custom_delimiter_with_comma function replaces the custom delimiter with a comma
+    # This function replaces the custom delimiter with a comma and handles the new line character
     delimiter = "\n"
     if string.startswith("//"):
         splitup_strings = string[2:].split("\n")
         delimiter = splitup_strings[0]
         string = delimiter.join(splitup_strings[1:])
-    print(string)
     new_string = string.replace(delimiter, ',')
     return new_string
 
@@ -25,5 +33,8 @@ def replace_custom_delimiter_with_comma(string):
 if __name__ == "__main__":
     # The main function takes user input and calls the add_numbers function
     input_string = str(input("Enter a string of numbers: "))
-    input_string = input_string.replace("\\n", "\n")
-    print(add_numbers(input_string))
+    try:
+        input_string = input_string.replace("\\n", "\n")
+        print(add_numbers(input_string))
+    except ValueError as exception:
+        print(exception)

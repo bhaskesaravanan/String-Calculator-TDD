@@ -39,4 +39,5 @@ def test_add_custom_delimiter_with_newline():
 def test_negative_numbers():
     with pytest.raises(ValueError, match="negative numbers not allowed: -5"):
         add_numbers("-5,5,5")
-
+    with pytest.raises(ValueError, match="negative numbers not allowed: -5, -3"):
+        add_numbers("-5,5,-3")
