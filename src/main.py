@@ -1,4 +1,5 @@
-
+# Description: This is the main file for the string calculator
+# The add_numbers function takes a string of numbers and returns the sum of the numbers
 
 def add_numbers(number_string):
     # return 0 on the empty string
@@ -9,6 +10,9 @@ def add_numbers(number_string):
 
 
 
+
+
 if __name__ == "__main__":
-    input_string = input("Enter a string of numbers: ")
+    # The main function takes user input and calls the add_numbers function
+    input_string = str(input("Enter a string of numbers: "))
     print(add_numbers(input_string))
