@@ -25,7 +25,7 @@ def test_add_newline_with_number():
 def test_add_custom_delimiter():
     result = add_numbers("//;\n5;5;5")
     assert result is 15
-    result = add_numbers("//-\n5-5-5")
+    result = add_numbers("//_\n5_5_5")
     assert result is 15
 
 
@@ -34,3 +34,9 @@ def test_add_custom_delimiter_with_newline():
     assert result is 15
     result = add_numbers("//;\n5;5\n5,5")
     assert result is 20
+
+
+def test_negative_numbers():
+    with pytest.raises(ValueError, match="negative numbers not allowed: -5"):
+        add_numbers("-5,5,5")
+
