@@ -5,14 +5,19 @@ def add_numbers(number_string):
     # return 0 on the empty string
     if not number_string:
         return 0
-    number_list = number_string.split(",")
+    string_with_number = replace_custom_delimiter_with_comma(number_string)
+    number_list = string_with_number.split(",")
     return sum([int(number) for number in number_list])
 
 
-
+def replace_custom_delimiter_with_comma(string):
+    # The replace_custom_delimiter_with_comma function replaces the custom delimiter with a comma
+    new_string = string.replace('\n', ',')
+    return new_string
 
 
 if __name__ == "__main__":
     # The main function takes user input and calls the add_numbers function
     input_string = str(input("Enter a string of numbers: "))
+    input_string = input_string.replace("\\n", "\n")
     print(add_numbers(input_string))
