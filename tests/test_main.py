@@ -16,6 +16,12 @@ def test_add_number():
     result = add_numbers("5,5,5")
     assert result is 15
 
+
 def test_add_newline_with_number():
     result = add_numbers("5\n5,5")
+    assert result is 15
+
+
+def test_add_custom_delimiter():
+    result = add_numbers("//;\n5;5;5")
     assert result is 15
