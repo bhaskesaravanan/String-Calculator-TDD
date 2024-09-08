@@ -12,7 +12,13 @@ def add_numbers(number_string):
 
 def replace_custom_delimiter_with_comma(string):
     # The replace_custom_delimiter_with_comma function replaces the custom delimiter with a comma
-    new_string = string.replace('\n', ',')
+    delimiter = "\n"
+    if string.startswith("//"):
+        splitup_strings = string[2:].split("\n")
+        delimiter = splitup_strings[0]
+        string = delimiter.join(splitup_strings[1:])
+    print(string)
+    new_string = string.replace(delimiter, ',')
     return new_string
 
 
