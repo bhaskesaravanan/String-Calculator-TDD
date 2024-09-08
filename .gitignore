@@ -1,0 +1,7 @@
+*.pyc
+*.pyo
+.idea
+*.pytest_cache
+*.datastore
+.DS_Store
+*.log
